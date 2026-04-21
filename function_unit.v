@@ -114,7 +114,7 @@ module mux4x1(F, S, X1, X2, X3, X4);
 				  (S == 2'b11) ? X4 : 16'bx;
 endmodule
 
-// Block 0 C1b - NEEDS TO BE MODIFIED
+
 module block0 (result, OpA, OpB, sel);
 	input [3:0] sel;
 	input [15:0] OpA, OpB;
@@ -133,15 +133,14 @@ module block0 (result, OpA, OpB, sel);
 	mux4x1 b2mux(result, select, and1, or1, xor1, xnor1);
 endmodule
 
-// Block 1 C1b - NEEDS TO BE MODIFIED
+
 module block1 (result, OpA, OpB, sel);
 	input [3:0] sel;
 	input [15:0] OpB, OpA;
 	output [15:0] result;
 	wire [15:0] div, mult, shift, notA;
 	wire [1:0] select;
-	// Replace this assign statement with your Verilog code.
-	// The operation of the arithmetic circuit is defined in the  specification.
+
 
 	// Implements lslb
 	assign shift[0] = 1'b0;
