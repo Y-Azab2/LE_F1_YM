@@ -37,7 +37,7 @@ module function_unit(FS, OpA, OpB, result, V, C, N, Z);
 	assign V = carry ^ cout;
 	assign C = carry & w2;
 	assign N = result[15] & ~(FS[3] & ~FS[2] & FS[1] & ~FS[0]);
-	assign Z = ~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
+	assign Z = ~result[15] &~result[14] &~result[13] &~result[12] &~result[11] &~result[10] &~result[9] &~result[8] &~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
 endmodule
 
 module block2(result, carry, cout, sel, A, B);
@@ -169,14 +169,14 @@ module block1 (result, OpA, OpB, sel);
 	assign div[5] = OpB[7];
 	assign div[6] = OpB[8];
 	assign div[7] = OpB[9];
-	assign div[8] = OpB[10]
-	assign div[9] = OpB[11]
-	assign div[10] = OpB[12]
-	assign div[11] = OpB[13]
-	assign div[12] = OpB[14]
-	assign div[13] = OpB[15]
-	assign div[14] = OpB[15]
-	assign div[15] = OpB[15]
+	assign div[8] = OpB[10];
+	assign div[9] = OpB[11];
+	assign div[10] = OpB[12];
+	assign div[11] = OpB[13];
+	assign div[12] = OpB[14];
+	assign div[13] = OpB[15];
+	assign div[14] = OpB[15];
+	assign div[15] = OpB[15];
 	// Implements mult16
 	assign mult[0] = 1'b0;
 	assign mult[1] = 1'b0;
