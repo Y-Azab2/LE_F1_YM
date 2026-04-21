@@ -37,7 +37,7 @@ module function_unit(FS, OpA, OpB, result, V, C, N, Z);
 	assign V = carry ^ cout;
 	assign C = carry & w2;
 	assign N = result[15] & ~(FS[3] & ~FS[2] & FS[1] & ~FS[0]);
-	assign Z = ~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
+	assign Z = ~result[15] &~result[14] &~result[13] &~result[12] &~result[11] &~result[10] &~result[9] &~result[8] &~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
 endmodule
 
 module block2(result, carry, cout, sel, A, B);
@@ -114,7 +114,7 @@ module mux4x1(F, S, X1, X2, X3, X4);
 				  (S == 2'b11) ? X4 : 16'bx;
 endmodule
 
-// Block 0 C1b - NEEDS TO BE MODIFIED
+
 module block0 (result, OpA, OpB, sel);
 	input [3:0] sel;
 	input [15:0] OpA, OpB;
@@ -133,15 +133,14 @@ module block0 (result, OpA, OpB, sel);
 	mux4x1 b2mux(result, select, and1, or1, xor1, xnor1);
 endmodule
 
-// Block 1 C1b - NEEDS TO BE MODIFIED
+
 module block1 (result, OpA, OpB, sel);
 	input [3:0] sel;
 	input [15:0] OpB, OpA;
 	output [15:0] result;
 	wire [15:0] div, mult, shift, notA;
 	wire [1:0] select;
-	// Replace this assign statement with your Verilog code.
-	// The operation of the arithmetic circuit is defined in the  specification.
+
 
 	// Implements lslb
 	assign shift[0] = 1'b0;
@@ -168,9 +167,16 @@ module block1 (result, OpA, OpB, sel);
 	assign div[3] = OpB[5];
 	assign div[4] = OpB[6];
 	assign div[5] = OpB[7];
-	assign div[6] = OpB[7];
-	assign div[7] = OpB[7];
-	
+	assign div[6] = OpB[8];
+	assign div[7] = OpB[9];
+	assign div[8] = OpB[10];
+	assign div[9] = OpB[11];
+	assign div[10] = OpB[12];
+	assign div[11] = OpB[13];
+	assign div[12] = OpB[14];
+	assign div[13] = OpB[15];
+	assign div[14] = OpB[15];
+	assign div[15] = OpB[15];
 	// Implements mult16
 	assign mult[0] = 1'b0;
 	assign mult[1] = 1'b0;
