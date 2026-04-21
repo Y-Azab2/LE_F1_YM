@@ -167,9 +167,16 @@ module block1 (result, OpA, OpB, sel);
 	assign div[3] = OpB[5];
 	assign div[4] = OpB[6];
 	assign div[5] = OpB[7];
-	assign div[6] = OpB[7];
-	assign div[7] = OpB[7];
-	
+	assign div[6] = OpB[8];
+	assign div[7] = OpB[9];
+	assign div[8] = OpB[10]
+	assign div[9] = OpB[11]
+	assign div[10] = OpB[12]
+	assign div[11] = OpB[13]
+	assign div[12] = OpB[14]
+	assign div[13] = OpB[15]
+	assign div[14] = OpB[15]
+	assign div[15] = OpB[15]
 	// Implements mult16
 	assign mult[0] = 1'b0;
 	assign mult[1] = 1'b0;
