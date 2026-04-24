@@ -14,7 +14,7 @@ module function_unit(FS, OpA, OpB, result, V, C, N, Z);
    output        C;				// Carry-out status bit
    output        N;				// Negative status bit
    output        Z;				// Zero status bit
-	
+
 	wire carry, cout;
 	wire w0, w1, w2;
 	wire [15:0] sel0, sel1, sel2;
@@ -30,14 +30,14 @@ module function_unit(FS, OpA, OpB, result, V, C, N, Z);
 	block1 misc(sel1, OpA, OpB, FS);
 	block0 logic(sel0, OpA, OpB, FS);
 
+	assign V = (carry ^ cout) & w2;
+	assign C = cout & w2;
+	assign N = result[15]; 
+	assign Z = ~result[15] & ~result[14] & ~result[13] & ~result[12] & ~result[11] & ~result[10] & ~result[9] & ~result[8] & ~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
+	
 	assign result = (w2 == 1'b1) ? sel2 :
 					(w1 == 1'b1) ? sel1 :
 					(w0 == 1'b1) ? sel0 : 16'bx;
-  
-	assign V = carry ^ cout;
-	assign C = carry & w2;
-	assign N = result[15] & ~(FS[3] & ~FS[2] & FS[1] & ~FS[0]);
-	assign Z = ~result[15] &~result[14] &~result[13] &~result[12] &~result[11] &~result[10] &~result[9] &~result[8] &~result[7] & ~result[6] & ~result[5] & ~result[4] & ~result[3] & ~result[2] & ~result[1] & ~result[0];
 endmodule
 
 module block2(result, carry, cout, sel, A, B);
@@ -91,14 +91,14 @@ module eightbitadder(S, A, B, C15, C16, C0);
 	full_adder fA5(S[5], c6, A[5], B[5], c5);
 	full_adder fA6(S[6], c7, A[6], B[6], c6);
 	full_adder fA7(S[7], c8, A[7], B[7], c7);
-	full_adder fA8(S[8], c9, A[0], B[8], c8);
-	full_adder fA9(S[9], c10, A[1], B[9], c9);
-	full_adder fA10(S[10], c11, A[2], B[10], c10);
-	full_adder fA11(S[11], c12, A[3], B[11], c11);
-	full_adder fA12(S[12], c13, A[4], B[12], c12);
-	full_adder fA13(S[13], c14, A[5], B[13], c13);
-	full_adder fA14(S[14], c15, A[6], B[14], c14);
-	full_adder fA15(S[15], C16, A[7], B[15], c15);
+	full_adder fA8(S[8], c9, A[8], B[8], c8);
+	full_adder fA9(S[9], c10, A[9], B[9], c9);
+	full_adder fA10(S[10], c11, A[10], B[10], c10);
+	full_adder fA11(S[11], c12, A[11], B[11], c11);
+	full_adder fA12(S[12], c13, A[12], B[12], c12);
+	full_adder fA13(S[13], c14, A[13], B[13], c13);
+	full_adder fA14(S[14], c15, A[14], B[14], c14);
+	full_adder fA15(S[15], C16, A[15], B[15], c15);
 	
 	assign C15 = c15;
 endmodule 
