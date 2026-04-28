@@ -2,7 +2,10 @@
 //
 // File: function_unit.v
 //
-// INSERT AN APPROPRIATE HEADER
+// Created By: Youssef Azab and Miles Riley
+// Version: 1
+// Modified: April 21, 2026
+// Description: Function unit from C.3 expanded to 16 bits 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module function_unit(FS, OpA, OpB, result, V, C, N, Z);
